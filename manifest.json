@@ -1,0 +1,17 @@
+{
+    "name": "TypeFast",
+    "short_name": "TypeFast",
+    "description": "A minimalist, lightweight typing test.",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#2c2c2c",
+    "theme_color": "#007bff",
+    "icons": [
+        {
+            "src": "favicon.svg",
+            "sizes": "48x48 72x72 96x96 128x128 256x256 512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ]
+}
