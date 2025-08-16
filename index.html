@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeFast</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.json">
+    <meta name="description" content="A simple, lightweight typing test for mobile and desktop.">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1 class="logo">TypeFast</h1>
+            <nav class="tabs">
+                <button class="tab-button active" data-tab="test">Test</button>
+                <button class="tab-button" data-tab="history">History</button>
+                <button class="tab-button" data-tab="settings">Settings</button>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <section id="test" class="tab-content active">
+                <div class="test-controls">
+                    <div class="mode-select">
+                        <button data-mode="time" class="mode-btn active">Time</button>
+                        <button data-mode="words" class="mode-btn">Words</button>
+                    </div>
+                    <div class="option-group" id="time-options">
+                        <button data-value="15">15s</button>
+                        <button data-value="30" class="active">30s</button>
+                        <button data-value="60">60s</button>
+                    </div>
+                    <div class="option-group hidden" id="words-options">
+                        <button data-value="10">10</button>
+                        <button data-value="25" class="active">25</button>
+                        <button data-value="50">50</button>
+                    </div>
+                    <button id="restart-btn" class="restart-btn">Restart</button>
+                </div>
+                <div class="test-area">
+                    <div id="words-display" class="words-display" tabindex="-1"></div>
+                    <input type="text" id="hidden-input" class="hidden-input" aria-label="Typing input">
+                    <div id="metrics-display" class="metrics-display">
+                        <div class="metric">WPM: <span id="wpm-value">0</span></div>
+                        <div class="metric">Accuracy: <span id="accuracy-value">0%</span></div>
+                        <div class="metric">Time: <span id="time-value">--</span></div>
+                    </div>
+                </div>
+                <div id="pause-overlay" class="overlay hidden">
+                    <span class="overlay-text">Paused</span>
+                </div>
+                <div id="results-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <h2>Test Complete</h2>
+                        <div class="results-grid">
+                            <div class="result-box">WPM<span id="final-wpm">0</span></div>
+                            <div class="result-box">Accuracy<span id="final-accuracy">0%</span></div>
+                            <div class="result-box">Time<span id="final-time">--</span></div>
+                        </div>
+                        <div id="raw-wpm-display">Raw WPM: <span>0</span></div>
+                        <div id="error-heatmap" class="error-heatmap"></div>
+                        <button id="copy-results-btn">Copy Results</button>
+                        <button id="modal-close-btn">Close</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="history" class="tab-content hidden">
+                <h2>History</h2>
+                <div id="history-chart" class="history-chart"></div>
+                <div id="history-list" class="history-list"></div>
+            </section>
+
+            <section id="settings" class="tab-content hidden">
+                <h2>Settings</h2>
+                <div class="setting-group">
+                    <label>Theme</label>
+                    <div class="toggle-switch">
+                        <span class="label">Light</span>
+                        <input type="checkbox" id="theme-toggle">
+                        <label for="theme-toggle" class="switch-label"></label>
+                        <span class="label">Dark</span>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label>High Contrast</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="high-contrast-toggle">
+                        <label for="high-contrast-toggle" class="switch-label"></label>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label>Strict Mode</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="strict-mode-toggle">
+                        <label for="strict-mode-toggle" class="switch-label"></label>
+                    </div>
+                    <small>No backspace allowed on previous words.</small>
+                </div>
+                <div class="setting-group">
+                    <label>Include Punctuation</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="punctuation-toggle">
+                        <label for="punctuation-toggle" class="switch-label"></label>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label>Include Numbers</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="numbers-toggle">
+                        <label for="numbers-toggle" class="switch-label"></label>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label>Cursor Style</label>
+                    <div class="option-group">
+                        <button data-cursor="block" class="cursor-btn active">Block</button>
+                        <button data-cursor="underline" class="cursor-btn">Underline</button>
+                        <button data-cursor="caret" class="cursor-btn">Caret</button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label>Sound Effects</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="sound-toggle">
+                        <label for="sound-toggle" class="switch-label"></label>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
